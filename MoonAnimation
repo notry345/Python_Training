@@ -3,16 +3,18 @@ from time import sleep
 canvas = Canvas(320,193)
 canvas.setBackgroundColor('black')
 
+moon = Layer()
 moon1 = Circle(33,Point(33,160))
 moon1.setFillColor('white')
 moon1.setBorderColor('white')
-canvas.add(moon1)
+moon.add(moon1)
+canvas.add(moon)
 
-def moon1_y_coordinate(x):
+def moon_y_coordinate(x):
   y = (-0.007874)*(x-160)**2-33
   return -y
 
 for i in range(254):
-    canvas.setBackgroundColor((0,0,i))
-    moon1.moveTo(33+i,moon1_y_coordinate(33+i))
+    canvas.setBackgroundColor((0,0,i)) #background color change
+    moon.moveTo(33+i,moon_y_coordinate(33+i)) #moon1 movement (quadratic path)
     sleep(0.01)
