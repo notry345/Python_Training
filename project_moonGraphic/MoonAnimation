@@ -1,13 +1,17 @@
 from cs1graphics import *
 from time import sleep
+
 canvas = Canvas(320,193)
 canvas.setBackgroundColor('black')
 
 moon = Layer()
-moon1 = Circle(33,Point(33,160))
+
+moon1 = Circle(33)
 moon1.setFillColor('white')
 moon1.setBorderColor('white')
+
 moon.add(moon1)
+moon.moveTo(33,160)
 canvas.add(moon)
 
 def moon_y_coordinate(x):

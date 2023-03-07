@@ -1,0 +1,43 @@
+from cs1graphics import *
+from time import sleep
+import sys
+
+canvas = Canvas(320,193)
+canvas.setBackgroundColor('black')
+
+moon = Layer()
+
+moon1 = Circle(33)
+moon1.setFillColor('white')
+moon1.setBorderColor('white')
+
+moon.add(moon1)
+moon.moveTo(33,160)
+canvas.add(moon)
+
+def y_coordinate(x):
+  y = (-0.007874)*(x-160)**2-33
+  return -y
+
+def radiusS(I):
+  radiusS = 33+(sys.maxsize-33)*I/127
+  return radiusS
+
+def x_center(radiusS,I):
+    x_center = ((radiusS)**(2)-(33)**2)**(1/2)
+    return x_center
+
+def make_shadow(radiusS,centerS,I,color):
+    shadow = Circle(radiusS,Point((i+x_center(radiusS,I)),160+y_coordinate(I)))
+    shadow.setFillColor(color)
+    shadow.setBorderColor(color)
+    moon.add(shadow)
+    sleep(0.01)
+    moon.remove(shadow)
+
+for i in range(254):
+    canvas.setBackgroundColor((0,0,i)) #background color change
+    make_shadow(radiusS(i),x_center(radiusS(i),i),i,(0,0,i))
+
+    moon.moveTo(33+i,y_coordinate(33+i)) #moon1 movement (quadratic path)
+    sleep(0.01)
