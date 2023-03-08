@@ -1,0 +1,92 @@
+(x0,x1,val) = (1,5,4.0)
+print("Max between"+str(x0)+" and "+str(x1)+" is "+str(val))
+print("Max between %d and %d is %g"%(x0,x1,val))
+
+(x0,x1,x2) = (1,2,3)
+print("%3d~%3d:%10g"%(x0,x1,x2))
+print("%-3d~%-3d:%-12g"%(x0,x1,x2))
+#포멧 연산자 % 사용 연습
+
+def is_palindrom(s):
+    for i in range(len[s]//2):
+        if s[i] != s[len(s)-i-1]:
+            return False
+    return True
+print(is_palindrom'apple')
+print(is_palindrom'hittih')
+#앞,뒤부터 읽어도 똑같은 단어(palindrom)인지 판별하는 함수
+
+s = "abcdef"
+print(s.upper())
+print(s.lower())
+print(s.capitalize())
+print(s.isalpha())
+print(s.isdigit())
+s2 = "1234"
+print(s2.isdigit())
+print(s.startswith('ef'))
+print(s.endswith('ef'))
+print(s.replace("de","123"))
+
+s = "12ab34cd"
+print(s.find("ab"))
+print(s.find('z'))
+print(s.find('ab',4))
+print(s.find('ab',1))
+print(s.find('ab',1,6))
+
+s = "  abc def  "
+print(s.rstrip())
+print(s.lstrip())
+print(s.strip())
+s1 = s.strip()
+print(s1)
+print(s1.split())
+s2="ab cd ef gh"
+l2 = s2.split()
+print(l2)
+
+s3 = "2023/03/09"
+print(s3.split("/"))
+
+s1 = "1234"
+s2 = "abc"
+print(s1.join(s2))
+#문자열 객체에 사용하는 멤버 함수들
+
+odds = {1,3,5,7,9}
+evens = {2,4,6,8,10}
+emptyset = set()
+randomset = {4,6,2,7,5,2,3}
+gold = [0,4,5,10,3,0,2,1,4,8,1,0,1,0,0,8,11,4,13,1,2,3,2,6,1,9]
+
+print(randomset)
+print(gold)
+goldset = set(gold)
+print(goldset)
+print(type(goldset))
+
+#set 객체의 원소의 순서는 중요하지 않음, 중복 허용하지 않음
+#리스트와 문자열을 set으로 변환 가능, 중복된 원소는 제거됨
+#원소의 인덱스 없음 > 순서를 사용하는 알고리즘 사용 금지
+
+print(set("Good morning!"))
+print(3 in odds)
+print(5 in evens)
+#in 연산자는 사용 가능
+
+randomset = {2,3,4,5,6,7}
+randomset.add(9)
+print(randomset)
+randomset.remove(7)
+print(randomset)
+print(randomset.pop())
+randomset.pop()
+print(randomset)
+print(randomset.intersection(odds))
+print(randomset.union(evens))
+print(randomset.difference(odds))
+print(odds.difference(randomset))
+print(randomset.difference(odds,evens))
+
+#set 객체에서 사용하는 멤버함수들
