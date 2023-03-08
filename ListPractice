@@ -1,0 +1,64 @@
+countries = ['Austra','Austri','Bel','Can','Chi','Cro','Cze','Fin','Fra',
+             'Ger','Great','Ita','Jap','Kaz','Lat','Net','Nor','Pol',
+             'Rus','Slova','Slove','South','Swe','Swit','Ukra','Unite']
+gold = [0,4,5,10,3,0,2,1,4,8,1,0,1,0,0,8,11,4,13,1,2,3,2,6,1,9]
+silver = [2,8,0,10,4,1,4,3,4,6,1,2,4,0,2,7,5,1,11,0,2,3,7,3,0,7]
+bronze = [1,5,1,5,2,0,2,1,7,5,2,6,3,1,2,9,10,1,9,0,4,2,6,2,1,12]
+
+korea = ["Korea","KR",(1,2,3)]
+
+nobles = ['helium','none','argon','krypton','xenon']
+
+nobles[1] = "neon"
+nobles.append('radon')
+
+list1 = ["A","B","C"]
+list2 = list1
+list2.append("D")
+list1[1] = "X"
+
+l = list(range(1,11))
+for i in range(len(l)):
+    l[i] = l[i]**2
+
+totals = []
+for i in range(21,len(countries)):
+    medals = gold[i] + silver[i]
+    totals.append((medals,countries[i]))
+
+ta = ["JinYeong","Jeongmin","Minsuk","Dohoo","Sangjae","Byung-Jun"]
+ta.sort()
+
+totals.sort()
+
+mylist = [2,2,7,1,0,7,3]
+
+totals.reverse()
+topten = totals[:10]
+
+table = []
+for i in range(len(countries)):
+    table.append((gold[i],silver[i],bronze[i],countries[i]))
+table.sort()
+topten = table[-10:]
+topten.reverse()
+
+def no_medals(countries,a1,b1):
+    result = []
+    for i in range(len(countries)):
+        if a1[i] == 0 and b1[i] ==0:
+            result.append(countries[i])
+    return result
+#한 종류의 메달 가진 나라들 구하는 함수
+
+only_gold = no_medals(countries,silver,bronze)
+only_silver = no_medals(countries,gold,bronze)
+only_bronze = no_medals(countries,silver,gold)
+only_one = only_gold + only_silver + only_bronze
+
+top_ten = table[-10:]
+top_ten.reverse()
+#10개국 금메달 많이 딴 순으로 정렬
+
+for g,s,b,country in top_ten:
+    print(country, g, s, b)
