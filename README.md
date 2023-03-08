@@ -17,3 +17,5 @@
   > interpolate colors  
   > conver string color name into a (r,g,b) tuple  
   > find x coordinate and y coordinate of the sun
+
+### 4. ListPractice
