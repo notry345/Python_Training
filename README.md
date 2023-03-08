@@ -19,5 +19,11 @@
   > find x coordinate and y coordinate of the sun
 
 ### 4. Unit6Practice
+  - list
+  - range()
+  - sequence
 
 ### 5. Unit7Practice
+  - %
+  - string
+  - set
