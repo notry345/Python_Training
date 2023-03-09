@@ -25,5 +25,9 @@
 
 ### 5. Unit7Practice
   - %
-  - string
   - set
+  - dictionary
+
+### 6. Unit8Practice
+  - image processing
+  - chorma key
