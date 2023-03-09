@@ -1,0 +1,38 @@
+from cs1media import *
+import math
+import color
+
+def pasete(canvas,img,x1,y1):
+    w,h = img.size()
+    for y in range(h):
+        for x in range(w):
+            canvas.set(x1+x,y1+y,img.get(x,y))
+#img를 canvas에 삽입
+
+def dist(c1,c2):
+    r1,g1,b1 = c1
+    r2,g2,b2 = c2
+    return math.sqrt((r1-r2)**2+(g1-g2)**2+(b1-b2)**2)
+#c1과 c2를 3차원 공간에 놓았을 때 두 점의 거리를 구하는 식
+#return값이 클수록 두 색깔(c1,c2)는 다른색이 됨
+
+def chroma(img,key,threshold):
+    w,h = img.size()
+    for y in range(h):
+        for x in range(w):
+            p = img.get(x,y)
+            if dist(p,key) < threshold:
+                img.set(x,y,Color.green)
+def chroma_paste(canvas,img,x1,y1,key):
+    w,h = img.size()
+    for y in range(h):
+        for x in range(w):
+            p = img.get(x,y)
+            if p != key:
+                canvas.set(x1+x,y1+y,p)
+
+canvas = load_picture("C:/Users/unju4/OneDrive/바탕 화면/note/canvas.jpg")
+img = load_picture("C:/Users/unju4/OneDrive/바탕 화면/note/img.jpg")
+chroma(img,(0,0,0),222)
+chroma_paste(canvas,img,0,0,Color.green)
+canvas.show()
