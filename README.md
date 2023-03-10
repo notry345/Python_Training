@@ -31,3 +31,4 @@
 ### 6. Unit8Practice
   - image processing
   - chorma key
+  - hide and restore picture
