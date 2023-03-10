@@ -1,3 +1,4 @@
+### NO.1
 from cs1media import *
 import math
 import color
@@ -36,3 +37,53 @@ img = load_picture("C:/Users/unju4/OneDrive/바탕 화면/note/img.jpg")
 chroma(img,(0,0,0),222)
 chroma_paste(canvas,img,0,0,Color.green)
 canvas.show()
+
+
+### NO.2
+from cs1media import *
+from cs1graphics import *
+
+def hide_picture(img, bwing):
+    w,h = img.size()
+    for y in range(h):
+        for x in range(w):
+            r,g,b = img.get(x,y)
+            if r%2 == 1:
+                r = r-1      
+            img.set(x,y,(r,g,b))
+    black = (0,0,0)
+    for y in range(h):
+        for x in range(w):
+            r,g,b = img.get(x,y)
+            if bwing.get(x,y) == black:
+                r = r+1
+            img.set(x,y,(r,g,b))
+#hide bwing into img
+            
+white = (255,255,255)
+black = (0,0,0)
+def restore_picture(img):
+    w,h = img.size()
+    for y in range(h):
+        for x in range(w):
+            r,g,b = img.get(x,y)
+            if r%2 == 1:
+                img.set(x,y,(r,g,b))
+            else:
+                img.set(x,y,black)
+
+img = load_picture("C:/Users/unju4/OneDrive/바탕 화면/note/frog.jpg")
+bwing = load_picture("C:/Users/unju4/OneDrive/바탕 화면/note/anonymous.jpg")
+
+w,h = bwing.size()
+for y in range(h):
+    for x in range(w):
+        r,g,b = bwing.get(x,y)
+        if r < 202:
+            bwing.set(x,y,black)
+        else:
+            bwing.set(x,y,white)
+
+hide_picture(img,bwing)
+restore_picture(img)
+img.show()
