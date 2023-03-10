@@ -127,7 +127,6 @@ def bubbleSort(a):
 a=[5,1,4,2,8]
 bubbleSort(a)
 print(a)
-
 #2중 반복문을 통해 리스트 정렬 
 
 def sieve(n):
@@ -144,5 +143,4 @@ def sieve(n):
         i=i+1
     return candidates
 print(sieve(26))
-
 #2중 반복문을 통해 소수를 구하는 알고리즘 구현 
