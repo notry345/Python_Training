@@ -87,3 +87,122 @@ for y in range(h):
 hide_picture(img,bwing)
 restore_picture(img)
 img.show()
+
+
+
+### NO.3
+f = open("C:/Users/unju4/OneDrive/바탕 화면/note/planets.txt","r")
+s = f.readline()
+print(s,len(s))
+
+for l in f:
+    s = l.strip()
+    print(s,end="  ")
+#텍스트 파일 읽어오기
+
+f = open("C:/Users/unju4/OneDrive/바탕 화면/note/planets.txt","r")
+planets = []
+for line in f:
+    planets.append(line.strip())
+f.close()
+print(planets)
+#리스트에 하나씩 넣기_개행문자 제거됨
+
+f = open("C:/Users/unju4/OneDrive/바탕 화면/note/planets.txt","r")
+planets = []
+planets = f.readlines()
+print(planets)
+#리스트에 하나씩 넣기_개행문자 제거 안됨
+
+f = open("C:/Users/unju4/OneDrive/바탕 화면/note/planets.txt","r")
+earth = 0
+for line in f:
+    earth += 1
+    planet = line.strip().lower()
+    if planet == "earth":
+        break
+print("Earth is planet #%d"%earth)
+#earth 포함된 줄의 위치 찾기
+
+for x in range(2):
+    for y in range(5):
+        print(y,end=" ")
+        if y==3:
+            break
+#break는 가장 가까운 반복문에서 탈출함
+
+f = open("C:/Users/unju4/OneDrive/바탕 화면/note/planets.txt","r")
+earth = 0
+for line in f:
+    planet = line.strip().lower()
+    if planet[0] == "#":
+        continue
+    earth += 1
+    if planet == "earth":
+        break
+print("Earth is planet #%d"%earth)
+#주석(#)달린 줄은 continue 키워드를 통하여 건너뛰기
+
+f = open("C:/Users/unju4/OneDrive/바탕 화면/note/words.txt","r")
+count = 0
+for line in f:
+    word = line.strip()
+    if not "e" in word:
+        count += 1
+print("%d words have no 'e'"%count)
+f.close()
+# e 들어가지 않는 단어 찾기
+
+f = open("C:/Users/unju4/OneDrive/바탕 화면/note/words.txt","r")
+def abecedarian(word):
+    is_abe = False
+    for i in range(1,len(word)):
+        if(word[i-1]<=word[i]):
+            is_abe = True
+        else:
+            is_abe = False
+            break
+    if is_abe == True:
+        print(word)
+for l in f:
+    word = l.strip()
+    abecedarian(word)
+#내 풀이
+#Abecedarian words
+#단어의 모든 글자가 알파벳 순으로 정렬된 단어 찾기
+
+def is_abecedarian(word):
+    for i in range(1,len(word)):
+        if word[i-1]>word[i]:
+            return False
+    return True
+f = open("C:/Users/unju4/OneDrive/바탕 화면/note/words.txt","r")
+for line in f:
+    word = line.strip()
+    if is_abecedarian(word):
+        print(word)
+f.close()
+#강의 풀이
+
+def triple(word):
+    for i in range(len(word)-6):
+        if word[i]==word[i+1] and word[i+2]==word[i+3] and word[i+4]==[i+5]:
+            return True
+#내 풀이
+def three_doubles(word):
+    s = ""
+    for i in range(1,len(word)):
+        if word[i-1] == word[i]:
+            s = s+"*"
+        else:
+            s = s+" "
+    return "* * *" in s
+#강의 풀이   
+f = open("C:/Users/unju4/OneDrive/바탕 화면/note/words.txt","r")
+for line in f:
+    word = line.strip()
+    if three_doubles(word):
+        print(word)
+f.close()
+#동일한 두 글자가 연속해서 3번 이상 이어지는 단어
+
