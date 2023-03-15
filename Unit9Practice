@@ -3,7 +3,7 @@
 def hand_value(hand):
     total = 0
     for card in hand:
-        total += card.value
+        total += card.value()
     return total
 
 def card_string(card):
@@ -21,6 +21,19 @@ class Card(object):
         assert face in FACES and suit in SUITS
         self.face = face
         self.suit = suit
+
+#hand_value(hand)함수와 card_string(card)함수를 Card 객체의 멤버함수로 만들기
+
+FACES=list(range(2,11))+['Jack','Queen','King','Ace']
+SUITS=['Clubs','Diamonds','Hearts','Spades']
+
+class Card(object):
+    """A Blackjack card."""
+    """Already defined __inti__ and value methods"""
+    def __init__(self,face,suit):
+        assert face in FACES and suit in SUITS
+        self.face = face
+        self.suit = suit
     def value(self):
         if type(self.face) == int:
             return self.face
@@ -28,3 +41,43 @@ class Card(object):
             return 11
         else:
             return 10
+    def __str__(self):
+        article = "a "
+        if self.face in [8, "Ace"]:
+            article = "an "
+        return (article + str(self.face) + " of " + self.suit)
+
+#card deck 만들기
+import random
+class Deck(object):
+    """A deck of cards."""
+    def __init__(self):
+        "Create a deck of 52 cards and shuffle them."
+        self.cards = []
+        for suit in SUITS:
+            for face in FACES:
+                self.cards.append(Card(face,suit))
+        random.shuffle(self.cards)
+    def draw(self):
+        """Draw the top card from the deck."""
+        return self.cards.pop()
+
+#player 수는 3, 각 5장의 카드를 가졌다고 가정하고 실행시켜보기
+num_players = 3
+num_cards = 5
+deck = Deck()
+hands = []
+for j in range(num_players):
+    hands.append([])
+for i in range(num_cards):
+    for j in range(num_players):
+        card = deck.draw()
+        hands[j].append(card)
+        print("Player",j+1,"draws",card)
+for j in range(num_players):
+    print("Player %d's hand (value %d):"%
+          (j+1,hand_value(hands[j])))
+    for card in hands[j]:
+        print(" ",card)
+
+
