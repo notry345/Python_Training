@@ -32,3 +32,7 @@
   - image processing
   - chorma key
   - hide and restore picture
+  - file processing
+
+### 7. Unit9Practice
+  - making a Blackjack game

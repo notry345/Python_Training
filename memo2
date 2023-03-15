@@ -1,0 +1,53 @@
+def split(line):
+    date,rate = line.split("          ")
+    y,m,d = date.split("/")
+    Date = int(y)*10000+int(m)*100+int(d)
+    Rate = 1//float(rate)
+    data = (Date,Rate)
+    return data
+def read_year(data):
+    (date,rate) = data
+    yr = date//1000
+    return yr
+def find_minmax(data):
+    minmax = [(9999,0)]*12
+    for d,v in data:
+        month = (d//100)%100-1
+        minr,maxr = minmax[month]
+        if v<minr:
+            minr = v
+        if v>maxr:
+            maxr = v
+        minmax[month] = minr,maxr
+    return minmax
+f2009 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2009.txt","r")
+f2008 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2008.txt","r")
+f2007 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2007.txt","r")
+f2006 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2006.txt","r")
+f2005 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2005.txt","r")
+f2004 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2004.txt","r")
+f2003 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2003.txt","r")
+f2002 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2002.txt","r")
+f2001 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2001.txt","r")
+f2000 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2000.txt","r")
+f1999 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1999.txt","r")
+f1998 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1998.txt","r")
+f1997 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1997.txt","r")
+f1996 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1996.txt","r")
+f1995 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1995.txt","r")
+f1994 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1994.txt","r")
+def file(file):
+    for l in file:
+        line = l.strip()
+        data = split(line)
+        yr = read_year(data)
+        minmax = find_minmax(yr)
+        
+    return (yr,minmax)
+
+for l in f2009:
+        line = l.strip()
+        data = split(line)
+        yr = read_year(data)
+        minmax = find_minmax(data)
+        print(yr,minmax)
