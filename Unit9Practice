@@ -107,5 +107,79 @@ class Table(object):
                 if key == 'n':
                     return False
 
+#닭가족의 여행 ㅋㅋ
+from cs1graphics import *
 
+class Chicken(object):
+    """Graphic representation of a chivken."""
+    pass
+
+def make_chicken(hen = False):
+    layer = Layer()
+    if hen:
+        body = Ellipse(70,80)
+        body.setFillColor("white")
+    else:
+        body = Ellipse(40,50)
+        body.setFillColor("yellow")
+        body.move(0,10)
+    body.setBorderColor("yellow")
+    body.setDepth(20)
+    layer.add(body)
+    #body,wing,eye만드는 코드 생략략
+    ch = Chicken()
+    ch.layer = layer
+    ch.body = body
+    ch.wing = wing
+    ch.eye = eye
+    return ch
+
+hen = make_chicken(True)
+chick1 = make_chicken()
+chick1.layer.move(120,0)
+herd = Layer()
+herd.add(hen.layer)
+herd.add(chick1.layer)
+herd.move(600,200)
+
+chick2 = make_chicken()
+chick2.layer.move(800,200)
+
+#Chicken object에 생성자 추가(make_chicken()을 생성자로)
+#객체를 움직이는 멤버함수로 바꾸기
+#객체지향적인 프로그래밍
+from cs1graphics import *
+
+class Chicken(object):
+    """Graphic representation of a chivken."""
+    def __init__(self,hen = False):
+        layer = Layer()
+        if hen:
+            body = Ellipse(70,80)
+            body.setFillColor("white")
+        else:
+            body = Ellipse(40,50)
+            body.setFillColor("yellow")
+            body.move(0,10)
+        body.setBorderColor("yellow")
+        body.setDepth(20)
+        layer.add(body)
+        #body,wing,eye만드는 코드 생략
+        self.layer = layer
+        self.body = body
+        self.wing = wing
+        self.eye = eye
+        
+    def move(self,dx,dy):
+        self.layer.move(dx,dy)      
+         
+hen = make_chicken(True) 
+chick1 = make_chicken()
+chick1.layer.move(120,0)
+herd = Layer()
+herd.add(hen.layer)
+herd.add(chick1.layer)
+herd.move(600,200)
+chick2 = make_chicken()
+chick2.layer.move(800,200)
 
