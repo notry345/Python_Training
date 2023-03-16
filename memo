@@ -1,5 +1,0 @@
-
-dataList = [file(f1994),file(f1995),file(f1996),file(f1997),file(f1998),
-            file(f1999),file(f2000),file(f2001),file(f2002),file(f2003),
-            file(f2004),file(f2005),file(f2006),file(f2007),file(f2008),
-            file(f2009)]
