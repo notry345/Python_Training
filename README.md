@@ -37,3 +37,8 @@
 ### 7. Unit9Practice
   - making a Blackjack game
   - trip of chicken family
+
+### 8. ExchangeRate
+  - organize text files into list
+  - extract min and max exchange rate value from the list
+  - graphical displayed the monthly exchange rate from 1994 to 2009

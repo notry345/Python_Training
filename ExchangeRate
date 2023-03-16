@@ -1,0 +1,87 @@
+f2009 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2009.txt","r")
+f2008 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2008.txt","r")
+f2007 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2007.txt","r")
+f2006 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2006.txt","r")
+f2005 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2005.txt","r")
+f2004 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2004.txt","r")
+f2003 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2003.txt","r")
+f2002 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2002.txt","r")
+f2001 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2001.txt","r")
+f2000 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2000.txt","r")
+f1999 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1999.txt","r")
+f1998 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1998.txt","r")
+f1997 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1997.txt","r")
+f1996 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1996.txt","r")
+f1995 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1995.txt","r")
+f1994 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1994.txt","r")
+#16개의 텍스트 파일 읽어오기
+#각 텍스트 파일에는 1년동안의 환율이 날짜별로 기록되어 있음
+def split(line):
+    date,rate = line.split("          ")
+    y,m,d = date.split("/")
+    date2 = y+m+d
+    Date = int(date2)
+    Rate = int(1//float(rate))
+    data = (Date,Rate)
+    return data
+#텍스트 파일의 한 줄을 튜플로 만들어서 반환하기
+def read_year(data):
+    (date,rate) = data
+    yr = date//10000
+    return yr
+def find_minmax(data):
+    minmax = [(9999,0)]*12
+    for data in datas:
+        (date,rate) = data
+        month = (int(date)//100)%100-1
+        minr,maxr = minmax[month]
+        rate = int(rate)
+        if rate<minr:
+            minr = rate
+        if rate>maxr:
+            maxr = rate
+        minmax[month] = minr,maxr
+    return minmax
+#각 달의 최대, 최소 환율 찾아 리스트로 반환
+def file(file):
+    datas = []
+    for l in file:
+        line = l.strip()
+        data = split(line)
+        datas.append(data)
+    minmax = find_minmax(datas)
+    return(minmax)
+#하나의 파일에서 각 달의 최소환율과 최대환율을 반환
+DATA = [file(f1994),file(f1995),file(f1996),file(f1997),file(f1998),file(f1999),
+        file(f2000),file(f2001),file(f2002),file(f2003),file(f2004),file(f2005),
+        file(f2006),file(f2007),file(f2008),file(f2009)]
+print(DATA)
+
+
+#cs1graphics이용해서 그래프 그리기
+
+from cs1graphics import *
+canvas = Canvas(579,419)
+canvas.setBackgroundColor((0,0,0))
+
+def color(rec, minmax):
+    if(minmax%2==0):
+        rec.setBorderColor((0,0,0))
+        rec.setFillColor((70,85,214))
+    else:
+        rec.setBorderColor((0,0,0))
+        rec.setFillColor((72,199,219))
+
+dx = 1.5
+for i in range(16):
+    for minmax in DATA[i]:
+        (min,max) = minmax
+        rec = Rectangle(3,(max-min)/2.5)
+        color(rec,DATA[i].index(minmax))
+        canvas.add(rec)
+        rec.moveTo(dx,419/1.1-(min-743)/2.5)
+        dx += 3
+
+
+    
+    
