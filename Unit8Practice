@@ -215,30 +215,6 @@ f.close()
 
 
 ## NO.4
-def split(line):
-    date,rate = line.split("          ")
-    y,m,d = date.split("/")
-    date2 = y+m+d
-    Date = int(date2)
-    Rate = int(1//float(rate))
-    data = (Date,Rate)
-    return data
-def read_year(data):
-    date,rate = data
-    yr = date//1000
-    return yr
-def find_minmax(yr):
-    minmax = [(9999,0)]*12
-    data = read_year(yr)
-    for d,v in data:
-        month = (d//100)%100-1
-        minr,mzxr = minmiz[month]
-        if v<minr:
-            minr = v
-        if v>maxr:
-            maxr = v
-        minmax[month] = minr,maxr
-    return minmax
 f2009 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2009.txt","r")
 f2008 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2008.txt","r")
 f2007 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/2007.txt","r")
@@ -255,37 +231,29 @@ f1997 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1997.txt","r")
 f1996 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1996.txt","r")
 f1995 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1995.txt","r")
 f1994 = open("C:/Users/unju4/OneDrive/바탕 화면/note/rate/1994.txt","r")
-def file(file):
-    list=[]
-    for l in file:
-        line = l.strip()
-        data = split(line)
-        list.append(data)
-    return list
-list1 = file(f1994)
-list2 = file(f1995)
-list3 = file(f1996)
-list4 = file(f1997)
-list5 = file(f1998)
-list6 = file(f1999)
-list7 = file(f2000)
-list8 = file(f2001)
-list9 = file(f2002)
-list10 = file(f2003)
-list11 = file(f2004)
-list12 = file(f2005)
-list13 = file(f2006)
-list14 = file(f2007)
-list15 = file(f2008)
-list16 = file(f2009)
-List = [list1,list2,list3,list4,list5,list6,list7,list8,list9,list10,
-        list11,list12,list13,list14,list15,list16]
-print(List)
- 
-    
 
-
-
-
-
-
+def split(line):
+    date,rate = line.split("          ")
+    y,m,d = date.split("/")
+    date2 = y+m+d
+    Date = int(date2)
+    Rate = int(1//float(rate))
+    data = (Date,Rate)
+    return data
+def read_year(data):
+    (date,rate) = data
+    yr = date//10000
+    return yr
+def find_minmax(data):
+    minmax = [(9999,0)]*12
+    for data in datas:
+        (date,rate) = data
+        month = (int(date)//100)%100-1
+        minr,maxr = minmax[month]
+        rate = int(rate)
+        if rate<minr:
+            minr = rate
+        if rate>maxr:
+            maxr = rate
+        minmax[month] = minr,maxr
+    return minmax
