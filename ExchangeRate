@@ -61,6 +61,7 @@ print(DATA)
 #cs1graphics이용해서 그래프 그리기
 
 from cs1graphics import *
+from time import sleep
 canvas = Canvas(579,419)
 canvas.setBackgroundColor((0,0,0))
 
@@ -79,6 +80,7 @@ for i in range(16):
         rec = Rectangle(3,(max-min)/2.5)
         color(rec,DATA[i].index(minmax))
         canvas.add(rec)
+        sleep(0.01)
         rec.moveTo(dx,419/1.1-(min-743)/2.5)
         dx += 3
 
