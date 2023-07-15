@@ -1,6 +1,0 @@
-name = input("input name: ")
-age = input("input age: ")
-height = input("input height: ")
-print(name)
-print(age)
-print(height)

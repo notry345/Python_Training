@@ -1,5 +1,0 @@
-sentence = input("문장: ")
-new_sentence = sentence.lower()
-new_sentence2 = new_sentence.replace("my","나의")
-new_sentence3 = new_sentence2.replace("apple","사과")
-print(new_sentence3)
